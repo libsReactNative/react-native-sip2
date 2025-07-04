@@ -25,9 +25,6 @@ android {
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
-        ndk {
-            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
-        }
     }
     
     compileOptions {
@@ -41,5 +38,7 @@ dependencies {
     implementation "com.google.code.gson:gson:2.10.1"
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.annotation:annotation:1.7.1'
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    
+    // Include sip2-android-core library
+    implementation project(':sip2-android-core')
 }

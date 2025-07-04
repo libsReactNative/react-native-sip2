@@ -1,0 +1,6 @@
+rootProject.name = 'react-native-sip2'
+
+include ':react-native-sip2'
+include ':sip2-android-core'
+
+project(':sip2-android-core').projectDir = new File(rootProject.projectDir, '../../sip2-android-core/android') 
