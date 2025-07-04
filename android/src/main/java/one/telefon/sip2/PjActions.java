@@ -2,13 +2,11 @@ package one.telefon.sip2;
 
 import android.content.Context;
 import android.content.Intent;
-
 import android.os.Bundle;
-
 import android.util.Log;
 
-import one.telefon.sip2.dto.CallSettingsDTO;
-import one.telefon.sip2.dto.SipMessageDTO;
+import org.telon.sip2.dto.CallSettingsDTO;
+import org.telon.sip2.dto.SipMessageDTO;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 
@@ -48,18 +46,18 @@ public class PjActions {
     public static final String ACTION_PROGRESS_CALL = "call_progress";
 
 
-    public static final String EVENT_STARTED = "one.telefon.account.started";
-    public static final String EVENT_ACCOUNT_CREATED = "one.telefon.account.created";
-    public static final String EVENT_REGISTRATION_CHANGED = "one.telefon.registration.changed";
-    public static final String EVENT_CALL_CHANGED = "one.telefon.call.changed";
-    public static final String EVENT_CALL_TERMINATED = "one.telefon.call.terminated";
-    public static final String EVENT_CALL_RECEIVED = "one.telefon.call.received";
-    public static final String EVENT_CALL_SCREEN_LOCKED = "one.telefon.call.screen.locked";
-    public static final String EVENT_MESSAGE_RECEIVED = "one.telefon.message.received";
-    public static final String EVENT_HANDLED = "one.telefon.handled";
+    public static final String EVENT_STARTED = "org.telon.account.started";
+    public static final String EVENT_ACCOUNT_CREATED = "org.telon.account.created";
+    public static final String EVENT_REGISTRATION_CHANGED = "org.telon.registration.changed";
+    public static final String EVENT_CALL_CHANGED = "org.telon.call.changed";
+    public static final String EVENT_CALL_TERMINATED = "org.telon.call.terminated";
+    public static final String EVENT_CALL_RECEIVED = "org.telon.call.received";
+    public static final String EVENT_CALL_SCREEN_LOCKED = "org.telon.call.screen.locked";
+    public static final String EVENT_MESSAGE_RECEIVED = "org.telon.message.received";
+    public static final String EVENT_HANDLED = "org.telon.handled";
 
     public static Intent createStartIntent(int callbackId, ReadableMap configuration, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_START);
         intent.putExtra("callback_id", callbackId);
 
@@ -69,7 +67,7 @@ public class PjActions {
     }
 
     public static Intent createSetServiceConfigurationIntent(int callbackId, ReadableMap configuration, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_SET_SERVICE_CONFIGURATION);
         intent.putExtra("callback_id", callbackId);
 
@@ -79,7 +77,7 @@ public class PjActions {
     }
 
     public static Intent createAccountCreateIntent(int callbackId, ReadableMap configuration, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_CREATE_ACCOUNT);
         intent.putExtra("callback_id", callbackId);
 
@@ -89,7 +87,7 @@ public class PjActions {
     }
 
     public static Intent createAccountRegisterIntent(int callbackId, int accountId, boolean renew, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_REGISTER_ACCOUNT);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("account_id", accountId);
@@ -99,7 +97,7 @@ public class PjActions {
     }
 
     public static Intent createAccountDeleteIntent(int callbackId, int accountId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_DELETE_ACCOUNT);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("account_id", accountId);
@@ -108,7 +106,7 @@ public class PjActions {
     }
 
     public static Intent createMakeCallIntent(int callbackId, int accountId, String destination, ReadableMap settings, ReadableMap message, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_MAKE_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("account_id", accountId);
@@ -126,7 +124,7 @@ public class PjActions {
     }
 
     public static Intent createHangupCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_HANGUP_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -134,19 +132,8 @@ public class PjActions {
         return intent;
     }
 
-    /*
-    public static Intent createActivateAudioSessionIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
-        intent.setAction(PjActions.ACTION_ACTIVATEAUDIOSESSION_CALL);
-        intent.putExtra("callback_id", callbackId);
-        intent.putExtra("call_id", callId);
-
-        return intent;
-    }
-    */
-
     public static Intent createDeclineCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_DECLINE_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -155,7 +142,7 @@ public class PjActions {
     }
 
     public static Intent createAnswerCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_ANSWER_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -164,7 +151,7 @@ public class PjActions {
     }
 
     public static Intent createRingingCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_RINGING_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -173,7 +160,7 @@ public class PjActions {
     }
 
     public static Intent createProgressCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_PROGRESS_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -182,7 +169,7 @@ public class PjActions {
     }
 
     public static Intent createHoldCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_HOLD_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -191,7 +178,7 @@ public class PjActions {
     }
 
     public static Intent createUnholdCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_UNHOLD_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -200,7 +187,7 @@ public class PjActions {
     }
 
     public static Intent createMuteCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_MUTE_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -209,7 +196,7 @@ public class PjActions {
     }
 
     public static Intent createUnMuteCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_UNMUTE_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -218,7 +205,7 @@ public class PjActions {
     }
 
     public static Intent createUseSpeakerCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_USE_SPEAKER_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -227,7 +214,7 @@ public class PjActions {
     }
 
     public static Intent createUseEarpieceCallIntent(int callbackId, int callId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_USE_EARPIECE_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -236,7 +223,7 @@ public class PjActions {
     }
 
     public static Intent createXFerCallIntent(int callbackId, int callId, String destination, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_XFER_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -246,17 +233,17 @@ public class PjActions {
     }
 
     public static Intent createXFerReplacesCallIntent(int callbackId, int callId, int destinationCallId, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_XFER_REPLACES_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
-        intent.putExtra("dest_call_id", destinationCallId);
+        intent.putExtra("destination_call_id", destinationCallId);
 
         return intent;
     }
 
     public static Intent createRedirectCallIntent(int callbackId, int callId, String destination, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_REDIRECT_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -266,7 +253,7 @@ public class PjActions {
     }
 
     public static Intent createDtmfCallIntent(int callbackId, int callId, String digits, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_DTMF_CALL);
         intent.putExtra("callback_id", callbackId);
         intent.putExtra("call_id", callId);
@@ -276,7 +263,7 @@ public class PjActions {
     }
 
     public static Intent createChangeCodecSettingsIntent(int callbackId, ReadableMap codecSettings, Context context) {
-        Intent intent = new Intent(context, PjSipService.class);
+        Intent intent = new Intent(context, org.telon.sip2.PjSipService.class);
         intent.setAction(PjActions.ACTION_CHANGE_CODEC_SETTINGS);
         intent.putExtra("callback_id", callbackId);
 
