@@ -47,6 +47,6 @@
     "type": "git",
     "url": "git+https://github.com/telon-org/react-native-sip2.git"
   },
-  "version": "3.0.2"
+  "version": "3.0.2",
   "license": "NativeMindNONC"
 }
